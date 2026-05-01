@@ -41,13 +41,5 @@ The physical schematic was successfully validated using the Wokwi Digital Twin e
 4. Press **Play** to initiate the non-blocking logic loop.
 5. Interact with the DHT22 and LDR sliders to trigger autonomous actuations.
 
-## 📁 Repository Deliverables
-* `/Firmware` - Contains the `main.ino` C++ code with comprehensive non-blocking logic.
-* `/Schematics` - Contains the Fritzing (`.fzz` and `.png`) NodeMCU wiring blueprint.
-* `/Architecture` - Contains the Draw.io System Flowchart detailing the FSM routing.
-* `/Documentation` - Contains the 12-page Technical Module Report & Calibration breakdown.
-* `/Evidence` - Contains the video demonstration of the Wokwi simulation in action.
-
----
 **Developed by:** Bharath M.  
 *Final Year IoT Engineering Project*
