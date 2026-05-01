@@ -1,28 +1,53 @@
-# Climate Control Module - UNLOX Minor Project
+# Smart Home Ecosystem: Adaptive Climate, Illumination, and Security Automation
 
-A production-grade embedded IoT system built to monitor ambient temperature and dynamically scale a DC motor's speed using Pulse Width Modulation (PWM). This project was developed as a minor project submission for Unlox Academy[cite: 1].
+![Platform](https://img.shields.io/badge/Platform-ESP32%20%7C%20NodeMCU-blue)
+![Language](https://img.shields.io/badge/Language-C++%20(Arduino)-orange)
+![Simulation](https://img.shields.io/badge/Simulation-Wokwi-purple)
 
-## 🎯 Objective
-To build a highly responsive, non-blocking Climate Control System that maps temperature readings to motor velocity, ensuring optimal thermal management without halting the microcontroller's execution loop[cite: 1].
+## 📌 Project Overview
+This project is an industry-grade IoT ecosystem designed to simulate the architectural principles of modern residential automation. It integrates autonomous environmental sensing, edge-based decision-making, and real-time actuation to create a responsive "Living Space." 
 
-## ⚙️ Functional Requirements Achieved
-* **Continuous Monitoring:** Reads temperature seamlessly without blocking execution[cite: 1].
-* **Dynamic Control:** Motor is OFF below 27°C, scales linearly, and hits max speed (PWM = 255) at 40°C[cite: 1].
-* **Data Logging:** Prints telemetry data every 500 ms in the format: `Temp: [Value]C, PWM: [Value]`[cite: 1].
+The core engineering achievement of this project is the **Asynchronous, Non-Blocking Logic Engine**. By completely abandoning traditional `delay()` functions and utilizing a `millis()`-based Finite State Machine (FSM), the central microcontroller achieves true parallel processing—monitoring climate, illumination, and security interrupts simultaneously without any system latency.
 
-## 🛠️ Hardware & Circuitry
-* **Microcontroller:** Arduino Uno / ESP32
-* **Temperature Sensor:** LM35 (or similar analog sensor)
-* **Actuator:** 5V DC Motor with an NPN Transistor (e.g., TIP120)
-* **Protection:** Flyback diode and base resistor included for circuit stability
+## ✨ Core Features & Modules
+1. **Adaptive Climate Control (HVAC):** Autonomous thermal management utilizing a DHT22 sensor. Triggers a localized cooling response (LED/Fan) when ambient temperature exceeds **30.0°C**, featuring a hysteresis shutdown loop.
+2. **Intelligent Ambient Illumination:** Energy conservation module utilizing a Photoresistor (LDR) on a 12-bit ADC. Automatically activates indoor lighting during low-light conditions (< 2000 ADC) and deactivates during peak daylight.
+3. **Proactive Intrusion Detection:** Primary perimeter defense. Bypasses standard comfort protocols to trigger aggressive auditory alarms upon detecting unauthorized entry or interrupts when the system is "Armed."
+4. **Automated Access & Entry:** Smart digital door simulation utilizing an SG90 Servo motor. Features a non-blocking 5-second time-locked auto-close sequence to ensure structural integrity.
+5. **Global State Governance:** Hardware interrupt (Slide Switch) to toggle the entire ecosystem between **Normal Mode** (Comfort) and **Security Mode** (High-sensitivity monitoring).
 
-> **Note:** The complete wiring schematic can be found in the `Circuit_Diagram.pdf` file included in this repository.
+## 🛠️ Hardware & Technical Stack
+### Microcontroller Blueprint
+* **Physical Architecture:** NodeMCU (ESP8266)
+* **Simulation Architecture:** ESP32 (Upgraded for stable Wokwi digital twin validation & advanced ADC).
 
-## 📂 Repository Structure
-This repository adheres to the UNLOX submission guidelines[cite: 1].
-```text
-BharathM_5851_ClimateControlProject/
-│
-├── ClimateControl.ino       # Main firmware source code
-├── Circuit_Diagram.pdf      # High-resolution circuit schematic
-└── README.md                # Project documentation
+### Sensor & Actuator Array
+* **Thermal:** DHT22 (1-Wire Digital)
+* **Luminosity:** Photoresistor Module (LDR)
+* **Access/Interrupts:** Pushbutton (Doorbell), Slide Switch (State Toggle)
+* **Actuators:** SG90 Micro Servo, Piezo Buzzer, 5mm Discrete LEDs (Blue/Yellow)
+
+## 💻 Software Architecture
+* **Environment:** Arduino IDE (C++)
+* **Timing Logic:** Hardware-timer polling via `millis()` (Zero `delay()` functions).
+* **State Management:** Finite State Machine (FSM) utilizing boolean flags (`isDoorOpen`, `isArmed`).
+* **Libraries:** `DHT sensor library` (Adafruit), `ESP32Servo`.
+
+## 🚀 Running the Digital Twin (Wokwi)
+The physical schematic was successfully validated using the Wokwi Digital Twin environment. 
+1. Open the [Wokwi Simulator](https://wokwi.com/).
+2. Load the `main.ino` firmware file.
+3. Ensure the `diagram.json` reflects the custom "Right-Side GPIO Topology" utilized in this project.
+4. Press **Play** to initiate the non-blocking logic loop.
+5. Interact with the DHT22 and LDR sliders to trigger autonomous actuations.
+
+## 📁 Repository Deliverables
+* `/Firmware` - Contains the `main.ino` C++ code with comprehensive non-blocking logic.
+* `/Schematics` - Contains the Fritzing (`.fzz` and `.png`) NodeMCU wiring blueprint.
+* `/Architecture` - Contains the Draw.io System Flowchart detailing the FSM routing.
+* `/Documentation` - Contains the 12-page Technical Module Report & Calibration breakdown.
+* `/Evidence` - Contains the video demonstration of the Wokwi simulation in action.
+
+---
+**Developed by:** Bharath M.  
+*Final Year IoT Engineering Project*
