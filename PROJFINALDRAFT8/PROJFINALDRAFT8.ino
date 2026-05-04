@@ -8,8 +8,6 @@ Servo doorServo;
 const uint8_t LDR_PIN       = A0;  
 const uint8_t DOORBELL_PIN  = D1;  
 const uint8_t PIR_PIN       = D2;  
-// SDA is on D3
-// SCL is on D4
 const uint8_t HVAC_FAN_PIN  = D5;  
 const uint8_t LIGHT_PIN     = D6;  
 const uint8_t BUZZER_PIN    = D7;  
