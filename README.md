@@ -7,7 +7,7 @@
 ## 📌 Project Overview
 This project is an industry-grade IoT ecosystem designed to simulate the architectural principles of modern residential automation. It integrates autonomous environmental sensing, edge-based decision-making, and real-time actuation to create a responsive "Living Space." 
 
-The core engineering achievement of this project is the **Asynchronous, Non-Blocking Logic Engine**. By completely abandoning traditional `delay()` functions and utilizing a `millis()`-based Finite State Machine (FSM), the central microcontroller achieves true parallel processing—monitoring climate, illumination, and security interrupts simultaneously without any system latency.
+The core engineering achievement of this project is the **Asynchronous, Non-Blocking Logic Engine**. By completely abandoning traditional `delay()` functions and utilizing a `millis()`-based Finite State Machine (FSM), the central microcontroller achieves true parallel processing—monitoring climate, illumination, and security interrupts simultaneously without any system latency
 
 ## ✨ Core Features & Modules
 1. **Adaptive Climate Control (HVAC):** Autonomous thermal management utilizing a DHT22 sensor. Triggers a localized cooling response (LED/Fan) when ambient temperature exceeds **30.0°C**, featuring a hysteresis shutdown loop.
